@@ -1,0 +1,6 @@
+{ "index" : { "_index" : "api", "_type" : "cuves" , "_id" : 1}
+{ "idCuve": 1, "libelle" : "Cuve 1","temperature" : 0 , "temperatureMax": 250}
+{ "index" : { "_index" : "api", "_type" : "cuves" , "_id" : 2}
+{ "idCuve": 2, "libelle" : "Cuve 2","temperature" : 0 , "temperatureMax": 250}
+{ "index" : { "_index" : "api", "_type" : "cuves" , "_id" : 3}
+{ "idCuve": 3, "libelle" : "Cuve 3","temperature" : 0 , "temperatureMax": 250}

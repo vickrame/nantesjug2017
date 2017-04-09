@@ -1,0 +1,6 @@
+{ "index" : { "_index" : "api", "_type" : "reacteurs" , "_id" : 1}
+{ "id": 1, "libelle" : "Reacteur1", "idCuve":1, "niveauUtilisation" : 60, "actif": true, "seuilTolerance":80}
+{ "index" : { "_index" : "api", "_type" : "reacteurs" , "_id" : 2}
+{ "id": 2, "libelle" : "Reacteur2", "idCuve":2, "niveauUtilisation" : 40, "actif": true, "seuilTolerance":60}
+{ "index" : { "_index" : "api", "_type" : "reacteurs" , "_id" : 3}
+{ "id": 3, "libelle" : "Reacteur3", "idCuve":3, "niveauUtilisation" : 60, "actif": false, "seuilTolerance":80}

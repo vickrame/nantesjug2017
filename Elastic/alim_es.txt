@@ -1,0 +1,12 @@
+{ "index" : { "_index" : "api", "_type" : "personnages" , "_id" : 1}
+{ "id": 1, "nom" : "Simpsons", "prenom": "Homer", "age":45}
+{ "index" : { "_index" : "api", "_type" : "personnages" , "_id" : 2}
+{ "id": 2, "nom" : "Simpsons", "prenom": "Marge", "age":40}
+{ "index" : { "_index" : "api", "_type" : "personnages" , "_id" : 3}
+{ "id": 3, "nom" : "Simpsons", "prenom": "Bart", "age":12}
+{ "index" : { "_index" : "api", "_type" : "personnages" , "_id" : 4}
+{ "id": 4, "nom" : "Simpsons", "Liza": "Marge", "age":8}
+{ "index" : { "_index" : "api", "_type" : "personnages" , "_id" : 5}
+{ "id": 5, "nom" : "Simpsons", "prenom": "Maggie", "age":1}
+{ "index" : { "_index" : "api", "_type" : "personnages" , "_id" : 6}
+{ "id": 6, "nom" : "Burns", "prenom": "", "age":70}

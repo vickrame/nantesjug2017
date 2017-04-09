@@ -1,0 +1,52 @@
+Nantes Jug
+
+Aide:
+Personnages : 8061,8062
+Reacteurs : 8071
+Cuves : 8081
+Eureka : 8050
+Zuul : 8051
+Hystrix : 8052
+Elasticsearch : 9200
+
+Alimentation des données dans ES
+curl -XPOST http://localhost:9200/_bulk --data-binary @alim_es.txt
+curl -XPOST http://localhost:9200/_bulk --data-binary @alim_es_reacteur.txt
+curl -XPOST http://localhost:9200/_bulk --data-binary @alim_es_cuves.txt
+
+Installation plugin Elastic 2.4.4
+plugin.bat install lmenezes/elasticsearch-kopf/v2.1.1
+
+Pré requis 
+1- Demarrer Elasticsearch
+
+Etapes Demo:
+
+Demo Eureka
+0- demarrer une api sans les annotations
+1- demarrer un serveur eureka
+2- demarrer un service sans la config eureka
+3- ajouter les services
+4- appel à un service dependant d'un autre
+5- appel au recacteur/eureka
+6- appel au nouveau service
+
+Zuul
+1- lancement du serveur
+2- montrer les reverse proxy
+
+Hystrix:
+1- montrer  le dashboard
+2- appel d'url hystric
+3- arreter le service
+4- faire un appel
+
+Zuul + Hystrix
+
+http://localhost:8051/rest/personnages/info
+http://localhost:8051/rest/reacteurs/info
+http://localhost:8051/rest/cuves/info
+
+Hystrix
+http://localhost:8052/hystrix
+http://localhost:8052/hystrix.stream
