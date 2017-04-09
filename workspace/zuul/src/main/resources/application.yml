@@ -2,27 +2,6 @@ info:
   component: nantes jug 2017 
   apis: 
    description: liste des api disponibles pour le nantes jug 2017
-   api:
-    name: personnes
-    urls:
-     getPersonnagesById : /personnages/{id}
-     create : /personnages
-     getAll : /personnages
-    grammaire:
-     personnage:
-      id : identifiant de la personne
-      nom : string
-      prenom: string
-      age : numeric
-   api:
-    name: reacteurs
-    urls:
-     getReacteursById : /rest/reacteurs/{id}
-     detail: /rest/reacteurs/{id}/detail
-     create : /rest/cuves
-     getAll : /rest/cuves
-     eureka : /rest/reacteurs/eureka
-     detailFromEureka : /reacteurs/{id}/v1/detail      
 
 
 endpoints:
@@ -74,9 +53,11 @@ zuul:
       path: /rest/cuves/**
       serviceId: ANNUAIRE-CUVES
       stripPrefix: false
-
-
-
+      
+instance:
+  #Virtual host name by which the clients identifies this service
+  virtualHostName: ${spring.application.name}
+  
 turbine:
   clusterNameExpression: "default"
   appConfig: ANNUAIRE-PERSONNE,ANNUAIRE-REACTEUR,ANNUAIRE-CUVES
