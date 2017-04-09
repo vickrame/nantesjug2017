@@ -1,0 +1,46 @@
+info:
+ component: 
+  api: 
+   description: liste des api reacteurs disponibles pour le nantes jug 2017
+   urls:
+    getReacteursById : /rest/reacteurs/{id}
+    detail: /rest/reacteurs/{id}/detail
+    create : /rest/cuves
+    getAll : /rest/cuves
+    eureka : /rest/reacteurs/eureka
+    detailFromEureka : /reacteurs/{id}/v1/detail
+       
+health:
+ component: Let's go
+
+error:
+ component: Erreur d acces au services.
+ 
+
+spring:
+  application:
+    name: annuaire-reacteur
+ 
+server:
+  port: 8071
+  tomcat:
+    accessLogEnabled: true
+
+eureka:
+  instance:
+    hostname: localhost
+    port: 8050
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8050/eureka/
+    healthcheck:
+      enabled: true
+    fetchRegistry: true
+    registryFetchIntervalSeconds: 5  
+
+logging:
+  file: c:/Dev/logs/nantesjug/cuves.log
+  level:
+    com.netflix: 'WARN'
+    org.springframework.cloud: 'WARN'

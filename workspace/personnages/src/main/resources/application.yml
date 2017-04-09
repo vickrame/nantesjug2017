@@ -1,0 +1,50 @@
+info:
+ component: 
+  api: 
+   description: liste des api personnages disponibles pour le nantes jug 2017
+   urls:
+    getPersonnagesById : /personnages/{id}
+    create : /personnages
+    getAll : /personnages
+   grammaire:
+    personnage:
+     id : identifiant de la personne
+     nom : string
+     prenom: string
+     age : numeric
+    
+health:
+ component: 
+  dependances:
+   elasticsearch : http://localhost:9200
+
+spring:
+  application:
+    name: annuaire-personne
+ 
+server:
+  port: 8062
+  tomcat:
+    accessLogEnabled: true
+
+eureka:
+  instance:
+    hostname: localhost
+    port: 8050
+  client:
+    fetchRegistry: true  
+    registerWithEureka: true
+    waitTimeInMsWhenSyncEmpty: 1
+    numberRegistrySyncRetries: 1
+    registrySyncRetryWaitMs: 1
+    evictionIntervalTimerInMs: 5    
+    serviceUrl:
+      defaultZone: http://localhost:8050/eureka/
+    healthcheck:
+      enabled: true
+
+logging:
+  file: c:/Dev/logs/nantesjug/personnages.log
+  level:
+    com.netflix: 'WARN'
+    org.springframework.cloud: 'WARN'

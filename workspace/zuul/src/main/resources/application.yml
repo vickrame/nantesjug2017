@@ -1,0 +1,86 @@
+info:
+  component: nantes jug 2017 
+  apis: 
+   description: liste des api disponibles pour le nantes jug 2017
+   api:
+    name: personnes
+    urls:
+     getPersonnagesById : /personnages/{id}
+     create : /personnages
+     getAll : /personnages
+    grammaire:
+     personnage:
+      id : identifiant de la personne
+      nom : string
+      prenom: string
+      age : numeric
+   api:
+    name: reacteurs
+    urls:
+     getReacteursById : /rest/reacteurs/{id}
+     detail: /rest/reacteurs/{id}/detail
+     create : /rest/cuves
+     getAll : /rest/cuves
+     eureka : /rest/reacteurs/eureka
+     detailFromEureka : /reacteurs/{id}/v1/detail      
+
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+    
+spring:
+  application:
+    name: zuul-server
+ 
+server:
+  port: 8051
+  
+logging:
+  level:
+    com.netflix: 'DEBUG'
+    org.springframework.cloud: 'DEBUG'
+  file: c:/Dev/logs/nantesjug/cuves.log
+  
+  
+eureka:
+  instance:
+    hostname: localhost
+    port: 8050
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8050/eureka/
+    healthcheck:
+      enabled: true
+    fetchRegistry: true
+    registryFetchIntervalSeconds: 5
+
+zuul:
+  routes:
+    annuaire-personne:
+      path: /rest/personnages/**
+      serviceId: ANNUAIRE-PERSONNE
+      stripPrefix: false
+    annuaire-reacteur:
+      path: /rest/reacteurs/**
+      serviceId: ANNUAIRE-REACTEUR
+      stripPrefix: false
+    annuaire-cuve:
+      path: /rest/cuves/**
+      serviceId: ANNUAIRE-CUVES
+      stripPrefix: false
+
+
+
+turbine:
+  clusterNameExpression: "default"
+  appConfig: ANNUAIRE-PERSONNE,ANNUAIRE-REACTEUR,ANNUAIRE-CUVES
+
+hystrix:
+  streamEnabled: true
+              

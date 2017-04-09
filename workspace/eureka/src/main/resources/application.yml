@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: eureka-server
+
+management:
+  context-path: /admin
+
+server:
+  port: 8050
+ 
+eureka:
+  instance:
+    hostname: localhost
+#    statusPageUrlPath: /admin/info
+#    healthCheckUrlPath: /admin/health
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    registration:
+      enabled:false  
+    waitTimeInMsWhenSyncEmpty: 1
+    numberRegistrySyncRetries: 1
+    enableSelfPreservation: false
+    registrySyncRetryWaitMs: 1
+    evictionIntervalTimerInMs: 5
+    retentionTimeInMSInDeltaQueue: 1
+        
+logging:
+  file: c:/Dev/logs/nantejug/eureka-serveur.log
+  level:
+    com.netflix: 'WARN'
+    org.springframework.cloud: 'WARN' 

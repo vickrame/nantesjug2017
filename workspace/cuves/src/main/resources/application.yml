@@ -1,0 +1,49 @@
+info:
+ component: 
+  api: 
+   description: liste des api cuves disponibles pour le nantes jug 2017
+   urls:
+    getCuvesById : /cuves/{id}
+    create : /cuves
+    getAll : /cuves
+       
+health:
+ component: 
+  dependances:
+   elasticsearch : http://localhost:9200
+   
+error:
+ component: Erreur d acces au services.
+
+spring:
+  application:
+    name: annuaire-cuves
+ 
+server:
+  port: 8081
+  tomcat:
+    accessLogEnabled: true
+
+eureka:
+  instance:
+    hostname: localhost
+    port: 8050
+    metadataMap:
+      instanceId: ${spring.application.name}    
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8050/eureka/
+    healthcheck:
+      enabled: true
+    fetchRegistry: true
+    registryFetchIntervalSeconds: 5
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    enabled: true      
+
+logging:
+  file: c:/Dev/logs/nantesjug/cuves.log
+  level:
+    com.netflix: 'WARN'
+    org.springframework.cloud: 'WARN'

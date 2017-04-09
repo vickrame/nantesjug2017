@@ -1,0 +1,50 @@
+info:
+  component: 
+   titre : Hystrix Dashboard
+   url : http://localhost:8052/hystrix.stream
+   circuitBreaker : http://localhost:8052/circuitBreaker
+  
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+
+spring:
+  application:
+    name: hystrix-server
+ 
+server:
+  port: 8052
+  
+logging:
+  level:
+    com.netflix: 'DEBUG'
+    org.springframework.cloud: 'DEBUG'
+    com.clea.nantes.jug.netflix.hystrix: 'ALL'
+  file: c:/Dev/logs/nantejug/hystrix-serveur.log
+        
+eureka:
+  instance:
+    hostname: localhost
+    port: 8050
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8050/eureka/
+    healthcheck:
+      enabled: true
+    fetchRegistry: true
+    registryFetchIntervalSeconds: 5  
+
+instance:
+  #Virtual host name by which the clients identifies this service
+  virtualHostName: ${spring.application.name}
+  
+turbine:
+  clusterNameExpression: "default"
+  appConfig: ANNUAIRE-PERSONNE,ANNUAIRE-REACTEUR,ANNUAIRE-CUVES
+
+hystrix:
+  streamEnabled: true
+  
